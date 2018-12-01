@@ -1,7 +1,15 @@
 @charset "UTF-8";
-/* CSS Document */
+/* MIXINS */
 /***********************************************
-                DEFAULTS
+EXTEND CODE
+//cannot place in media queries???
+***********************************************/
+.bg-content2, .bg-content1 {
+  font-weight: 100;
+}
+
+/***********************************************
+DEFAULTS
 ***********************************************/
 * {
   padding: 0;
@@ -9,9 +17,7 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
-*:after,
-*:before {
+*:after, *:before {
   -webkit-box-sizing: inherit;
   box-sizing: inherit;
 }
@@ -19,6 +25,7 @@
 html {
   font-size: 16px;
   font-family: "Josefin Sans", ‘Trebuchet MS’, Helvetica, sans-serif;
+  /* default for whole page */
   line-height: 1.6;
   font-weight: 400;
 }
@@ -26,6 +33,7 @@ html {
 h1, h2, h3, h4 {
   font-weight: 700;
   font-family: Cardo, ‘Palatino Linotype’, ‘Book Antiqua’, Palatino, serif;
+  /* serif for the headings */
 }
 
 ul {
@@ -33,10 +41,10 @@ ul {
 }
 
 /***********************************************
-                SPECIAL
+SPECIAL
 ***********************************************/
 /***********************************************
-                LAYOUT
+LAYOUT
 ***********************************************/
 .bg-header {
   background-color: #fff;
@@ -46,9 +54,7 @@ ul {
   border-top: 1rem solid #3a5E63;
   position: relative;
 }
-
-.bg-header:before,
-.bg-header:after {
+.bg-header:before, .bg-header:after {
   content: "";
   position: absolute;
   bottom: -1rem;
@@ -56,11 +62,9 @@ ul {
   width: 30%;
   background-color: #3a5E63;
 }
-
 .bg-header:before {
   left: 0;
 }
-
 .bg-header:after {
   right: 0;
 }
@@ -73,13 +77,11 @@ ul {
 .bg-content1 {
   background-color: #fff;
   color: #222;
-  font-weight: 100;
 }
 
 .bg-content2 {
   background-color: #C7F7FF;
   color: #3a5E63;
-  font-weight: 100;
 }
 
 .bg-footer {
@@ -93,12 +95,10 @@ header {
   margin: 0 auto;
   position: relative;
 }
-
 header h1 {
   width: 100%;
   padding: 0 2rem;
 }
-
 header nav {
   width: 100%;
   display: flex;
@@ -108,7 +108,6 @@ header nav {
   align-items: stretch;
   padding: 2rem 0;
 }
-
 header nav > a {
   flex-basis: 100%;
   flex-grow: 1;
@@ -136,46 +135,41 @@ section.content2 {
   justify-content: flex-start;
   align-items: stretch;
 }
-
 .row .col {
   flex-basis: 100%;
   /* mobile default */
 }
 
+footer {
+  padding: 2rem 0;
+}
 footer .row {
   flex-wrap: nowrap;
   flex-direction: row;
   justify-content: space-around;
   align-items: flex-start;
 }
-
+footer .row .col:first-child {
+  border-left: 0;
+}
 footer .row > * {
   flex-basis: 50%;
   padding-bottom: 2rem;
   border-left: 1px solid #3a5E63;
   margin-bottom: 2rem;
 }
-
 footer .row.last-row > * {
   flex-basis: 100%;
 }
 
-footer .row .col:first-child {
-  border-left: 0;
-}
-
-footer {
-  padding: 2rem 0;
-}
-
 /***********************************************
-                NAVIGATION
+NAVIGATION
 ***********************************************/
 header nav > a {
+  font-size: 1.414rem;
   text-align: center;
   text-decoration: none;
   color: #222;
-  font-size: 1.414rem;
   letter-spacing: 0.25rem;
   border: 1px solid #d4d4d4;
   border-bottom: none;
@@ -183,20 +177,18 @@ header nav > a {
   line-height: 1;
   background-color: #fff;
 }
-
 header nav > a:hover {
   font-weight: 700;
   color: #7C593C;
 }
 
 /***********************************************
-                CONTENT
+CONTENT
 ***********************************************/
 header h1 {
   color: #7C593C;
   letter-spacing: 0.1rem;
 }
-
 header h1 i.fa-lg {
   display: block;
   width: 25%;
@@ -205,14 +197,13 @@ header h1 i.fa-lg {
   line-height: 12.7936rem;
   color: #C9A689;
 }
-
 header h1 i.fa-lg ~ span {
   float: right;
   width: 75%;
   font-size: 3.998rem;
-  /**
-  2 lines of 3.998 * 1.6 = 12.7936
-  **/
+  /*
+      	2 lines of 3.998 * 1.6 = 12.7936
+  */
   padding-left: 1rem;
   text-align: right;
 }
@@ -228,45 +219,56 @@ header h1 i.fa-lg ~ span {
   padding: 0.2rem 2rem 2rem;
 }
 
+.content1 p {
+  font-size: 1.414rem;
+  padding: 0.5rem 2rem 2rem;
+}
 .content1 h3 {
   font-size: 1.999rem;
   padding: 0.2rem 2rem 2rem;
 }
-
 .content1 h3 i {
   vertical-align: middle;
   padding-right: 2rem;
-}
-
-.content1 p {
-  font-size: 1.414rem;
-  padding: 0.5rem 2rem 2rem;
 }
 
 .content2 h3 {
   font-size: 1.999rem;
   padding: 1rem 2rem 0.5rem;
 }
-
 .content2 h4 {
   font-size: 1.999rem;
   padding: 1rem 2rem 0rem;
 }
-
+.content2 h4 span[lang=sv]:after {
+  background-image: url(../img/sv-icon.png);
+}
+.content2 h4 span[lang=pt]:after {
+  background-image: url(../img/pt-icon.png);
+}
+.content2 h4 span[lang=fr]:after {
+  background-image: url(../img/fr-icon.png);
+}
+.content2 h4 span[lang=no]:after {
+  background-image: url(../img/no-icon.png);
+}
+.content2 h4 span[lang=hi]:after {
+  background-image: url(../img/hi-icon.png);
+}
+.content2 h4 span[lang=es]:after {
+  background-image: url(../img/es-icon.png);
+}
 .content2 p {
   font-size: 1.414rem;
   padding: 0.5rem 2rem 1rem;
 }
-
 .content2 li {
-  padding: 0.5rem 2rem;
   font-size: 1.414rem;
+  padding: 0.5rem 2rem;
 }
-
 .content2 span[lang] {
   position: relative;
 }
-
 .content2 span:hover:after {
   position: absolute;
   top: -0.5rem;
@@ -288,61 +290,33 @@ header h1 i.fa-lg ~ span {
   background-position: left center;
 }
 
-.content2 h4 span[lang=sv]:after {
-  background-image: url(../img/sv-icon.png);
-}
-
-.content2 h4 span[lang=pt]:after {
-  background-image: url(../img/pt-icon.png);
-}
-
-.content2 h4 span[lang=fr]:after {
-  background-image: url(../img/fr-icon.png);
-}
-
-.content2 h4 span[lang=no]:after {
-  background-image: url(../img/no-icon.png);
-}
-
-.content2 h4 span[lang=hi]:after {
-  background-image: url(../img/hi-icon.png);
-}
-
-.content2 h4 span[lang=es]:after {
-  background-image: url(../img/es-icon.png);
-}
-
 /***********************************************
-                FOOTER
+FOOTER
 ***********************************************/
 footer h4 {
   font-size: 1.414rem;
   padding: 0.5rem 2rem;
   color: #7C593C;
 }
-
+footer h4 [lang=de] {
+  display: block;
+}
+footer h4 [lang=en],
+footer h4 [lang=ar],
+footer h4 [lang=ru] {
+  display: none;
+}
 footer p {
   font-size: 1rem;
   padding: 0.5rem 2rem;
   color: #222;
 }
-
 footer .fa-circle {
   color: #222;
 }
 
-footer h4[lang=de] {
-  display: block;
-}
-
-footer h4[lang=en],
-footer h4[lang=ar],
-footer h4[lang=ru] {
-  display: none;
-}
-
 /***********************************************
-                MEDIA QUERIES
+MEDIA QUERIES
 ***********************************************/
 @media all and (min-width: 701px) and (max-width: 900px) {
   header {
@@ -350,17 +324,13 @@ footer h4[lang=ru] {
     margin: 0 auto;
     min-height: 8rem;
   }
-
+  header:before, header:after {
+    width: 230px;
+  }
   header h1 {
     width: 100%;
     color: #7C593C;
   }
-
-  header:before,
-header:after {
-    width: 230px;
-  }
-
   header h1 i.fa-lg {
     display: inline;
     color: #7C593C;
@@ -369,24 +339,21 @@ header:after {
     font-size: 4rem;
     line-height: 6.3968rem;
   }
-
   header h1 i.fa-lg ~ span {
     float: none;
     letter-spacing: 0.25rem;
     font-size: 3.998rem;
-    /**
-    1 lines of 3.998 * 1.6 = 6.3968
-    **/
+    /*
+            		1 lines of 3.998 * 1.6 = 6.3968
+    */
     text-align: left;
   }
-
   header nav {
     flex-direction: row;
     /* mobile first */
     justify-content: space-around;
     align-items: center;
   }
-
   header nav > a {
     flex-basis: 20%;
     font-size: 1rem;
@@ -397,7 +364,6 @@ header:after {
     padding: 1rem;
     background-color: #fff;
   }
-
   header nav > a:last-child {
     border-right: 1px solid #d4d4d4;
   }
@@ -420,51 +386,43 @@ footer {
     justify-content: center;
     align-items: flex-start;
   }
-
   .content2 .row .col {
     flex-basis: 50%;
   }
 
+  section.content2 h4 {
+    font-size: 1.414rem;
+  }
+  section.content2 li {
+    font-size: 1.414rem;
+  }
+
+  footer h4[lang=ar] {
+    display: block;
+  }
+  footer h4[lang=de],
+footer h4[lang=en],
+footer h4[lang=ru] {
+    display: none;
+  }
   footer .row {
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
   }
-
+  footer .row .last-row > * {
+    flex-basis: 100%;
+  }
   footer .row > * {
     flex-basis: 50%;
   }
-
-  footer .row.last-row > * {
-    flex-basis: 100%;
-  }
-
-  section.content2 h4 {
-    font-size: 1.414rem;
-  }
-
-  section.content2 li {
-    font-size: 1.414rem;
-  }
-
-  footer .fa-circle {
-    color: #89C0C9;
-  }
-
   footer .row:first-child .col:last-child {
     unicode-bidi: bidi-override;
     direction: rtl;
   }
-
-  footer h4[lang=ar] {
-    display: block;
-  }
-
-  footer h4[lang=de],
-footer h4[lang=en],
-footer h4[lang=ru] {
-    display: none;
+  footer .fa-circle {
+    color: #89C0C9;
   }
 }
 @media all and (min-width: 901px) and (max-width: 1400px) {
@@ -472,17 +430,13 @@ footer h4[lang=ru] {
     width: 900px;
     margin: 0 auto;
   }
-
-  header:before,
-header:after {
+  header:before, header:after {
     width: 300px;
   }
-
   header h1 {
     width: 100%;
     color: #3a5E63;
   }
-
   header h1 i.fa-lg {
     display: inline;
     color: #3a5E63;
@@ -491,24 +445,21 @@ header:after {
     font-size: 4rem;
     line-height: 6.3968rem;
   }
-
   header h1 i.fa-lg ~ span {
     float: none;
     letter-spacing: 0.25rem;
     font-size: 3.998rem;
-    /**
-    1 lines of 3.998 * 1.6 = 6.3968
-    **/
+    /*
+            		1 lines of 3.998 * 1.6 = 6.3968
+    */
     text-align: left;
   }
-
   header nav {
     flex-direction: row;
     /* mobile first */
     justify-content: space-around;
     align-items: center;
   }
-
   header nav > a {
     flex-basis: 20%;
     font-size: 1rem;
@@ -520,7 +471,6 @@ header:after {
     margin: 1rem 0;
     background-color: #fff;
   }
-
   header nav > a:first-child {
     border-left: none;
   }
@@ -567,12 +517,10 @@ footer .row {
   footer .row .col {
     flex-basis: 50%;
   }
-
-  footer .row.last-row {
+  footer .row .last-row {
     justify-content: flex-start;
   }
-
-  footer .row.last-row .col {
+  footer .row .last-row .col {
     flex-basis: 100%;
   }
 
@@ -580,7 +528,6 @@ footer .row {
     font-size: 1.999rem;
     font-weight: 100;
   }
-
   section.content1 h3 .fa-2x {
     font-size: 1.999rem;
     padding-right: 1rem;
@@ -589,11 +536,9 @@ footer .row {
   section.content2 h4 {
     font-size: 1.414rem;
   }
-
   section.content2 li {
     font-size: 1.414rem;
   }
-
   section.content2 p {
     font-size: 1rem;
     font-weight: 400;
@@ -602,11 +547,9 @@ footer .row {
   footer .fa-circle {
     color: #C9A689;
   }
-
   footer h4[lang=ru] {
     display: block;
   }
-
   footer h4[lang=de],
 footer h4[lang=ar],
 footer h4[lang=en] {
@@ -618,17 +561,13 @@ footer h4[lang=en] {
     width: 1400px;
     margin: 0 auto;
   }
-
-  header:before,
-header:after {
+  header:before, header:after {
     width: 450px;
   }
-
   header h1 {
     width: 100%;
     color: #7C593C;
   }
-
   header h1 i.fa-lg {
     display: inline;
     color: #7C593C;
@@ -637,17 +576,15 @@ header:after {
     font-size: 4rem;
     line-height: 6.3968rem;
   }
-
   header h1 i.fa-lg ~ span {
     float: none;
     letter-spacing: 0.25rem;
     font-size: 3.998rem;
-    /**
-    1 lines of 3.998 * 1.6 = 6.3968
-    **/
+    /*
+            		1 lines of 3.998 * 1.6 = 6.3968
+    */
     text-align: left;
   }
-
   header nav {
     flex-direction: row;
     /* mobile first */
@@ -657,10 +594,9 @@ header:after {
     padding: 0rem 0;
     background-color: #fff;
   }
-
   header nav > a {
-    flex-basis: 20%;
     font-size: 1.414rem;
+    flex-basis: 20%;
     line-height: 2rem;
     min-height: 2rem;
     border: none;
@@ -669,7 +605,6 @@ header:after {
     margin: 1rem 0;
     background-color: #fff;
   }
-
   header nav > a:first-child {
     border-left: none;
   }
@@ -706,70 +641,59 @@ footer .row {
   footer .row .col {
     flex-basis: 50%;
   }
-
-  footer .row.last-row {
+  footer .row .last-row {
     justify-content: flex-start;
   }
-
-  footer .row.last-row .col {
+  footer .row .last-row .col {
     flex-basis: 100%;
   }
 
-  section.focal h2 {
+  section .focal h2 {
+    width: 600px;
+    margin: 0 auto;
     font-size: 3.998rem;
+  }
+  section .focal p.author {
     width: 600px;
     margin: 0 auto;
   }
-
-  section.focal p.author {
-    width: 600px;
-    margin: 0 auto;
-  }
-
-  section.content1 h3 {
+  section .content1 h3 {
     font-size: 2.827rem;
     font-weight: 100;
   }
-
-  section.content1 h3 .fa-2x {
+  section .content1 h3 .fa-2x {
     font-size: 2.827rem;
     padding-right: 1rem;
     vertical-align: middle;
   }
 
-  section.content2 h4 {
+  section .content2 h4 {
     font-size: 1.999rem;
   }
-
-  section.content2 li {
+  section .content2 p {
+    font-size: 1.414rem;
+  }
+  section .content2 li {
     font-size: 1.999rem;
-  }
-
-  section.content2 p {
-    font-size: 1.414rem;
-  }
-
-  footer p {
-    font-size: 1.414rem;
-    letter-spacing: 0.2rem;
-  }
-
-  footer p:last-child {
-    color: #d4d4d4;
-  }
-
-  footer .fa-circle {
-    color: #89C0C9;
   }
 
   footer h4[lang=en] {
     display: block;
   }
-
   footer h4[lang=de],
 footer h4[lang=ar],
 footer h4[lang=ru] {
     display: none;
+  }
+  footer p {
+    font-size: 1.414rem;
+    letter-spacing: 0.2rem;
+  }
+  footer p:last-child {
+    color: #d4d4d4;
+  }
+  footer .fa-circle {
+    color: #89C0C9;
   }
 }
 
